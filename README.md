@@ -1,6 +1,7 @@
 # Lab 2: Logical Clocks and Replication Consistency
 
 **Student:** Mukhammedali Sabitov IT-2305
+
 **Course:** Distributed Computing 
 
 ## Overview
