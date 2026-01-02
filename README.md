@@ -1,60 +1,57 @@
-Lab 2: Logical Clocks and Replication Consistency
+
+# Lab 2: Logical Clocks and Replication Consistency
 
 Student: Mukhammedali Sabitov IT-2305
 Course: Distributed Computing
-Date: January 2, 2026
 
-Overview
+## Overview
 
 This project implements a distributed Key-Value Store running on 3 nodes (A, B, C). It ensures consistency using Lamport Logical Clocks and a Last-Writer-Wins (LWW) conflict resolution strategy. The system is deployed on AWS EC2 instances and communicates via HTTP with JSON payloads.
 
-Files
+## Files
 
-node.py: Server implementation (HTTP, JSON, Lamport Clock logic, Replication).
+* node.py: Server implementation (HTTP, JSON, Lamport Clock logic, Replication).
 
-client.py: CLI tool to interact with the nodes (PUT, GET, STATUS).
+* client.py: CLI tool to interact with the nodes (PUT, GET, STATUS).
 
-REPORT.pdf: Report containing screenshots and analysis of the 3 causality scenarios.
+* REPORT.pdf: Report containing screenshots and analysis of the 3 causality scenarios.
 
-Dependencies
+## Dependencies
 
-Python 3.x (Standard library only)
+* Python 3.x (Standard library only)
 
-AWS EC2 instances (Ubuntu 22.04 LTS)
+* AWS EC2 instances (Ubuntu 22.04 LTS)
 
-Security Groups configured for ports 8000, 8001, 8002.
+* Security Groups configured for ports 8000, 8001, 8002.
 
-How to Run
+**How to Run**
 1. Start the Nodes
 
 Use the Private IP addresses of your instances for internal communication.
 
-Node A (Port 8000):
+**Node A (Port 8000):**
 
-code
-Bash
+```bash
 download
 content_copy
 expand_less
-python3 node.py --id A --port 8000 --peers http://<IP-B>:8001,http://<IP-C>:8002
+python3 node.py --id A --port 8000 --peers http://<IP-B>:8001,http://<IP-C>:8002```
 
-Node B (Port 8001):
+**Node B (Port 8001):**
 
-code
-Bash
+```bash
 download
 content_copy
 expand_less
-python3 node.py --id B --port 8001 --peers http://<IP-A>:8000,http://<IP-C>:8002
+python3 node.py --id B --port 8001 --peers http://<IP-A>:8000,http://<IP-C>:8002```
 
 Node C (Port 8002):
-
-code
-Bash
+```Bash
 download
 content_copy
 expand_less
-python3 node.py --id C --port 8002 --peers http://<IP-A>:8000,http://<IP-B>:8001
+python3 node.py --id C --port 8002 --peers http://<IP-A>:8000,http://<IP-B>:8001```
+
 2. Client Operations
 
 Run these commands from a separate terminal to interact with the cluster:
